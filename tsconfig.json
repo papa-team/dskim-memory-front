@@ -1,0 +1,59 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": false,
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "sourceRoot": "src",
+    "strict": true,
+    "strictPropertyInitialization": true,
+    "useDefineForClassFields": true,
+//    "target": "ESNext",
+//    "useDefineForClassFields": true,
+//    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+//    "allowJs": false,
+//    "skipLibCheck": true,
+//    "esModuleInterop": false,
+//    "allowSyntheticDefaultImports": true,
+//    "strict": true,
+//    "forceConsistentCasingInFileNames": true,
+//    "module": "ESNext",
+//    "moduleResolution": "Node",
+//    "resolveJsonModule": true,
+//    "isolatedModules": true,
+//    "noEmit": true,
+//    "jsx": "react-jsx",
+    "paths": {
+      "~/*" : ["*"]
+    },
+    "plugins": [{
+      "transform": "typescript-transform-paths",
+      "afterDeclarations": true
+    }]
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }],
+}
