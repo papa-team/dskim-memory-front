@@ -3,12 +3,14 @@ import {FindBoardsQuery} from "~/comp/api/board/query/query";
 import {AxiosResponse} from "axios";
 import {Board} from "~/comp";
 
+const BASE_URL = '/board';
+
 const findBoards = (): Promise<AxiosResponse<Board[]>> => {
   const query: FindBoardsQuery = {
     //
   };
   return axiosInstance().post(
-    '/board/find-all-boards',
+    `${BASE_URL}/find-all/query`,
     query
   )
 }
