@@ -6,14 +6,14 @@ import {useParams} from "react-router-dom";
 const BoardDetailView = () => {
   //
   const {id} = useParams();
-  console.log(id);
   const {board} = useBoard(id ? id : '');
-
-  console.log("board >>>: ", board)
 
   return (
     <>
+      <div>조회수 : {board?.viewCount}</div>
       <div>{board?.title}</div>
+      <div>{board?.content}</div>
+      <div>{board?.registrationTime}</div>
     </>
   );
 }
