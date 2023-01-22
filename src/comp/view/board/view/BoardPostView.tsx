@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
 import BoardFlowApiStub from "~/comp/api/board/command/rest/BoardFlowApiStub";
 import {BoardCdo} from "~/comp";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 const BoardListView = () => {
   //
+  const navigate = useNavigate();
   const {registerBoard} = BoardFlowApiStub;
   const [boardCdo, setBoardCdo] = useState<BoardCdo>(null);
   const handleClickRegister = async () => {
     if (boardCdo === null) {
-      alert("wow~")
+      toast("비어있는 칸이 있어요", {type: "warning"})
       return;
     }
     await registerBoard(boardCdo);
@@ -32,6 +35,7 @@ const BoardListView = () => {
       <textarea placeholder={"내용을 입력하세요"} onChange={handleChangeInput} name={"content"}/>
 
       <button onClick={handleClickRegister}>등록</button>
+      <button onClick={() => navigate("/")}>목록으로 돌아가기</button>
     </>
   );
 }

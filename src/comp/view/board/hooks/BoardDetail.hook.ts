@@ -3,17 +3,18 @@ import {useCallback} from "react";
 import {Board} from "~/comp";
 import BoardSeekApiStub from "~/comp/api/board/query/rest/BoardSeekApiStub";
 
-export const useBoards = () => {
-  const { genQueryKey, queryFn } = BoardSeekApiStub.findBoards;
-  const queryKey = genQueryKey();
+export const useBoard = (boardId: string) => {
+  const { genQueryKey, queryFn } = BoardSeekApiStub.findBoard;
+  const queryKey = genQueryKey(boardId);
 
   const { data, isLoading, refetch } = useQuery({
     queryKey,
-    queryFn: async () => {
-      const res =  await queryFn();
+    queryFn: async ({queryKey}) => {
+      const [, , id] = queryKey;
+      const res =  await queryFn(id);
       return res.data;
     },
-    enabled: false,
+    // enabled: false,
   })
 
   const queryClient = useQueryClient();
@@ -22,7 +23,7 @@ export const useBoards = () => {
   }, [queryClient]);
 
   return {
-    boards: data,
+    board: data,
     isLoading,
     optimisticUpdate,
     refetch

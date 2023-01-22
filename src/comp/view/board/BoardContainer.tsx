@@ -1,5 +1,4 @@
 import React from 'react';
-import {Table, TableBody, TableCell, TableHead, TableRow} from "@mui/material";
 import {useBoards} from "~/comp/view/board/hooks/BoardList.hook";
 import BoardListView from "~/comp/view/board/view/BoardListView";
 import {useNavigate} from "react-router-dom";
@@ -25,8 +24,8 @@ const BoardContainer = () => {
   //     ApiQuery.findBoards.api,
   // );
 
-  const handleClick = () => {
-    refetch();
+  const handleClick = async () => {
+    await refetch();
   }
   return (
     <>
