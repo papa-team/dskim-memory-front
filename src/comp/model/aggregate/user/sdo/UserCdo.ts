@@ -1,6 +1,6 @@
-import {UserMetadata} from "~/comp";
-
 export interface UserCdo {
   //
-  userMetadata: UserMetadata;
+  userId: string;
+  userName: string;
+  password: string;
 }

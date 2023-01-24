@@ -1,10 +1,13 @@
-import {Follow, UserMetadata} from "~/comp";
+import {Follow} from "~/comp";
 
 export interface User {
   //
-   userMetadata: UserMetadata;
+  //  userMetadata: UserMetadata;
+   userId: string;
+   userName: string;
+   password: string;
+   signUpTime: string;
    followers: Follow[];
    following: Follow[];
-   signUpTime: string;
    bookmarks: string[];
 }
