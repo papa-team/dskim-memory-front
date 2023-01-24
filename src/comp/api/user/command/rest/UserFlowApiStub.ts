@@ -26,5 +26,5 @@ const registerUser = (userCdo: UserCdo): Promise<AxiosResponse<any>> => {
 
 export default {
   registerBookmark,
-  registerUser
+  registerUser,
 }

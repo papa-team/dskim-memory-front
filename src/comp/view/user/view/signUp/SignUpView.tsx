@@ -3,9 +3,10 @@ import {Box, Button, TextField} from "@mui/material";
 import {UserCdo} from "~/comp";
 import UserFlowApiStub from "~/comp/api/user/command/rest/UserFlowApiStub";
 
-const LoginView = () => {
+const SignUpView = () => {
   //
   const {registerUser} = UserFlowApiStub;
+  // @ts-ignore
   const [userCdo, setUserCdo] = useState<UserCdo>(null);
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const name = e.currentTarget.name;
@@ -35,4 +36,4 @@ const LoginView = () => {
   )
 };
 
-export default LoginView;
+export default SignUpView;

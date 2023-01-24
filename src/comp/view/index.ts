@@ -1,2 +1,2 @@
 export * from './board';
-export * from './login';
+export * from './user';
