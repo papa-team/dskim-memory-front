@@ -1,7 +1,6 @@
-import {User} from "~/comp/model/aggregate/board/vo";
-
 export interface BoardCdo {
-  user: User;
+  //
+  userId: string;
   title: string;
   content: string;
 }
