@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.3",
+    "@uiw/react-md-editor": "^3.20.2",
     "react-toastify": "^9.1.1",
     "rollup-plugin-tsconfig-paths": "^1.4.0",
     "typescript-transform-paths": "^3.4.6"
