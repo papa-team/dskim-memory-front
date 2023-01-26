@@ -23,19 +23,18 @@ const BoardListView = () => {
       <Grid gap={1} container>
       {boards?.map((board, index) => {
         return (
-          <Grid item>
-          <Card
-            key={`boards_${index}`}
-            onClick={() => handleClickBoardItem(board.id)}
-            sx={{ maxWidth: 345 }}
-          >
-            <CardContent>
-              <Typography>{board.title}</Typography>
-              <Typography>{board.content}</Typography>
-              <Typography>{board.registrationTime}</Typography>
-              <Typography>{board.viewCount}</Typography>
-            </CardContent>
-          </Card>
+          <Grid item key={`boards_${index}`}>
+            <Card
+              onClick={() => handleClickBoardItem(board.id)}
+              sx={{ maxWidth: 345 }}
+            >
+              <CardContent>
+                <Typography>{board.title}</Typography>
+                <Typography>{board.content}</Typography>
+                <Typography>{board.registrationTime}</Typography>
+                <Typography>{board.viewCount}</Typography>
+              </CardContent>
+            </Card>
           </Grid>
         )
       })}

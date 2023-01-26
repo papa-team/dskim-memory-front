@@ -4,6 +4,6 @@ export interface Board {
   content: string;
   registrationTime: string;
   modificationTime: string;
-  likeCount: number;
+  bookmarkCount: number;
   viewCount: number;
 }
