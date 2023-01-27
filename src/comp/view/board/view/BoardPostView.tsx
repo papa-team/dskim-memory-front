@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import BoardFlowApiStub from "~/comp/api/board/command/rest/BoardFlowApiStub";
-import {BoardCdo, boardIdAtom, BoardUdo, editableAtom, useBoard} from "~/comp";
+import {BoardCdo, boardIdAtom, editableAtom, useBoard} from "~/comp";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 import MDEditor from '@uiw/react-md-editor';
@@ -31,7 +31,13 @@ const BoardPostView = () => {
       toast("비어있는 칸이 있어요", {type: "warning"})
       return;
     }
-    await registerBoard(boardCdo);
+    await registerBoard(boardCdo)
+      .then(() => {
+        navigate('/');
+      })
+      .catch(() => {
+        alert("post Error");
+      });
   }
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

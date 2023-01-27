@@ -1,16 +1,11 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {useBoards} from "~/comp/view/board/hooks/BoardList.hook";
 import BoardListView from "~/comp/view/board/view/BoardListView";
-import {useNavigate} from "react-router-dom";
-import {useAtom} from "jotai";
-import {editableAtom} from "~/comp";
+import {Button} from "@mui/material";
 
 const BoardContainer = () => {
   //
-  const navigate = useNavigate();
   const {refetch} = useBoards();
-
-  const [,setEditable] = useAtom(editableAtom);
 
   // const test = useQuery(ApiQuery.findBoards.queryKey, ApiQuery.findBoards.api,
   //   {
@@ -28,20 +23,13 @@ const BoardContainer = () => {
   //     ApiQuery.findBoards.api,
   // );
 
-  const handleClick = async () => {
+  const handleClickRefresh = async () => {
     await refetch();
   }
 
-  const handleClickNewPost = useCallback(() => {
-    navigate("/post-new");
-    setEditable(false);
-  }, []);
-
   return (
     <>
-      <button onClick={handleClick}>조회</button>
-      <br/>
-      <button onClick={handleClickNewPost}>새 글 작성하기</button>
+      <Button variant={"contained"} onClick={handleClickRefresh}>Refresh</Button>
       <br/>
       <BoardListView />
     </>

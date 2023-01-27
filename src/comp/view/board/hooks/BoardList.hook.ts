@@ -13,7 +13,8 @@ export const useBoards = () => {
       const res =  await queryFn();
       return res.data;
     },
-    enabled: false,
+    enabled: true,
+    refetchOnWindowFocus: false,
   })
 
   const queryClient = useQueryClient();

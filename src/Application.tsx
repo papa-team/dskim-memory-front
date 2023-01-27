@@ -2,15 +2,25 @@ import {BrowserRouter as Router} from "react-router-dom";
 import PageRoutes from "~/comp/routes";
 import React from "react";
 import AppLayout from "~/comp/AppLayout";
+import {darkTheme, lightTheme} from "~/ThemeConfig";
+import {ThemeProvider} from "@mui/material";
+import {useAtom} from "jotai";
+import {themeAtom} from "~/comp";
 
-const Application = () => (
-  <Router>
-    {/*<RouterProvider router={routes} />*/}
-    {/*<RouterProvider router={routes} />*/}
-    <AppLayout>
-      <PageRoutes />
-    </AppLayout>
-  </Router>
-)
+const Application = () => {
+  //
+  const [dark] = useAtom(themeAtom);
+
+  return (
+    <Router>
+      {/*<RouterProvider router={routes} />*/}
+      <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+        <AppLayout>
+          <PageRoutes/>
+        </AppLayout>
+      </ThemeProvider>
+    </Router>
+  )
+}
 
 export default Application;

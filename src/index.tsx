@@ -21,11 +21,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Provider>
-      {/*<RouterProvider router={routes} />*/}
-      {/*<RouterProvider router={routes} />*/}
         <Application/>
+        <ToastContainer/>
       </Provider>
-      <ToastContainer/>
     </QueryClientProvider>
   </React.StrictMode>,
 )
