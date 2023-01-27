@@ -1,11 +1,11 @@
 import {useQuery, useQueryClient} from "react-query";
 import {useCallback} from "react";
-import {Board} from "~/comp";
-import BoardSeekApiStub from "~/comp/api/board/query/rest/BoardSeekApiStub";
+import {User} from "~/comp";
+import UserSeekApiStub from "~/comp/api/user/query/rest/UserSeekApiStub";
 
-export const useBoard = (boardId: string) => {
-  const { genQueryKey, queryFn } = BoardSeekApiStub.findBoard;
-  const queryKey = genQueryKey(boardId);
+export const useUserRdo = (id: string) => {
+  const { genQueryKey, queryFn } = UserSeekApiStub.findUser;
+  const queryKey = genQueryKey(id);
 
   const { data, isLoading, refetch } = useQuery({
     queryKey,
@@ -15,16 +15,16 @@ export const useBoard = (boardId: string) => {
       return res.data;
     },
     enabled: true,
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: false
   })
 
   const queryClient = useQueryClient();
-  const optimisticUpdate = useCallback((_board: Board) => {
-    queryClient.setQueryData(queryKey, _board);
+  const optimisticUpdate = useCallback((_user: User) => {
+    queryClient.setQueryData(queryKey, _user);
   }, [queryClient]);
 
   return {
-    board: data,
+    userRdo: data,
     isLoading,
     optimisticUpdate,
     refetch

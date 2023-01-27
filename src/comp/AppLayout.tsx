@@ -1,25 +1,23 @@
 import React, {useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
 import HeaderView from "~/comp/view/layout/view/HeaderView";
-import {useAtom} from "jotai";
-import {userAtom} from "~/comp/store";
+import {useLogin} from "~/comp/view/user/view/login/Login.hook";
 
 const AppLayout = (props) => {
   const navigate = useNavigate();
-  const [, _setUser] = useAtom<typeof userAtom>(userAtom);
+  const {userLogin} = useLogin()
+
   useEffect(() => {
-    if (sessionStorage.getItem('login') !== "true") {
+    if (userLogin === undefined) {
       navigate('/login')
     } else {
-      _setUser({
-        userId: sessionStorage.getItem("userId") as string,
-        userName: sessionStorage.getItem("userName") as string,
-      })
+      navigate('/')
     }
-  }, [sessionStorage.getItem('login')])
+  }, [userLogin]);
+
   return (
     <>
-      <HeaderView />
+      {userLogin && <HeaderView />}
       <div>{props.children}</div>
     </>
   )
