@@ -3,7 +3,7 @@ import PageRoutes from "~/comp/routes";
 import React from "react";
 import AppLayout from "~/comp/AppLayout";
 import {darkTheme, lightTheme} from "~/ThemeConfig";
-import {ThemeProvider} from "@mui/material";
+import {CssBaseline, ThemeProvider} from "@mui/material";
 import {useAtom} from "jotai";
 import {themeAtom} from "~/comp";
 
@@ -15,6 +15,7 @@ const Application = () => {
     <Router>
       {/*<RouterProvider router={routes} />*/}
       <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+        <CssBaseline/>
         <AppLayout>
           <PageRoutes/>
         </AppLayout>

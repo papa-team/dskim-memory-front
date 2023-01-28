@@ -1,4 +1,6 @@
 import {createTheme, PaletteOptions, Palette} from "@mui/material/styles";
+import {Components} from "@mui/material/styles/components";
+import {Theme} from "@mui/material/styles/createTheme";
 
 const lightMode = {
   primary: "#2999C9",
@@ -44,7 +46,7 @@ const palette = (isDark: boolean): PaletteOptions & ExtraPaletteOptions => ({
     black: isDark ? darkMode.black : lightMode.black
   },
   grey: {
-    50: '#f2f4f5',
+    50: isDark ?  '#3b3b3b' : '#f2f4f5',
     // 100: string,
     // 200: string,
     // 300: string,
@@ -79,8 +81,25 @@ export const fonts = {
   }
 }
 
+const CssBaselineOverride = (isDark: boolean): Components<Omit<Theme, 'components'>> => {
+  return (
+    {
+      MuiCssBaseline: {
+        styleOverrides: () => `
+          body {
+            background: ${palette(isDark).grey?.["50"]};
+          }
+        `,
+      }
+    }
+  );
+};
+
 const lightTheme = createTheme({
   ...commonStyle,
+  components: {
+    ...CssBaselineOverride(false),
+  },
   palette: {
     ...palette(false)
   }
@@ -88,6 +107,9 @@ const lightTheme = createTheme({
 
 const darkTheme = createTheme({
   ...commonStyle,
+  components: {
+    ...CssBaselineOverride(true)
+  },
   palette: {
     ...palette(true)
   }
