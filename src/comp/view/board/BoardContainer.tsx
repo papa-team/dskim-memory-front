@@ -1,7 +1,8 @@
 import React from 'react';
 import {useBoards} from "~/comp/view/board/hooks/BoardList.hook";
 import BoardListView from "~/comp/view/board/view/BoardListView";
-import {Button} from "@mui/material";
+import {IconButton} from "@mui/material";
+import {Refresh} from "@mui/icons-material";
 
 const BoardContainer = () => {
   //
@@ -29,8 +30,11 @@ const BoardContainer = () => {
 
   return (
     <>
-      <Button variant={"contained"} onClick={handleClickRefresh}>Refresh</Button>
-      <br/>
+      <IconButton
+        onClick={handleClickRefresh}
+      >
+        <Refresh/>
+      </IconButton>
       <BoardListView />
     </>
   );

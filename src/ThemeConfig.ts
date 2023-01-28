@@ -24,6 +24,12 @@ interface ExtraPaletteOptions {
   toggle: {
     main: string,
     thumb: string
+  },
+  card: {
+    main: string
+  },
+  body: {
+    main: string
   }
 }
 
@@ -35,19 +41,25 @@ const palette = (isDark: boolean): PaletteOptions & ExtraPaletteOptions => ({
     main: "#1A2858",
   },
   text: {
-    primary: "#000",
+    primary: isDark ? "#fff" : "#000",
     secondary: "#aaa",
   },
   toggle: {
     main: isDark ? "#a8a8a8" : "#ddd",
     thumb: isDark ? "#8c8c8c" : "#ddd",
   },
+  card: {
+    main: isDark ? "#1e1e1e" : "#ffffff",
+  },
   common: {
     black: isDark ? darkMode.black : lightMode.black
   },
+  body: {
+    main: isDark ? '#121212' : '#F8F9FA',
+  },
   grey: {
-    50: isDark ?  '#3b3b3b' : '#f2f4f5',
-    // 100: string,
+    50: isDark ?  '#1c1c1c' : '#f2f4f5',
+    // 100: isDark ?  '#1c1c1c' : '#f2f4f5',
     // 200: string,
     // 300: string,
     // 400: string,
@@ -78,6 +90,9 @@ export const fonts = {
     font12: '0.75rem',
     font10: '0.625rem',
     font8: '0.5rem',
+  },
+  fontWeight: {
+
   }
 }
 
@@ -86,8 +101,11 @@ const CssBaselineOverride = (isDark: boolean): Components<Omit<Theme, 'component
     {
       MuiCssBaseline: {
         styleOverrides: () => `
+          html {
+            font-size: 14px;
+          }
           body {
-            background: ${palette(isDark).grey?.["50"]};
+            background: ${palette(isDark).body.main};
           }
         `,
       }
